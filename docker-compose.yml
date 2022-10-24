@@ -1,0 +1,21 @@
+version: "3.7"
+services:
+  postgres:
+    image: postgres:13
+    restart: always
+    environment:
+      - POSTGRES_USER=prisma
+      - POSTGRES_PASSWORD=test123
+      - POSTGRES_DATABASE=skeleton_db
+    ports:
+      - "5432:5432"
+
+  adminer:
+    image: adminer:4.8.1
+    restart: always
+    ports:
+      - 2100:8080
+    depends_on:
+      - postgres
+volumes:
+  mysql_prisma_container:
